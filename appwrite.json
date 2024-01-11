@@ -1,0 +1,24 @@
+{
+    "projectId": "65971012f07082d8ab5b",
+    "projectName": "doctopia",
+    "functions": [
+        {
+            "$id": "65a03e872b8af9cb6fcb",
+            "name": "My Awesome Function",
+            "runtime": "dart-2.17",
+            "execute": [],
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "enabled": true,
+            "logging": true,
+            "entrypoint": "lib/main.dart",
+            "commands": "dart pub get",
+            "ignore": [
+                ".packages",
+                ".dart_tool"
+            ],
+            "path": "."
+        }
+    ]
+}

@@ -57,7 +57,7 @@
     },
     {
       "name": "build_runner",
-      "rootUri": "file:///C:/Users/KareemZaher/AppData/Local/Pub/Cache/hosted/pub.dev/build_runner-2.4.7",
+      "rootUri": "file:///C:/Users/KareemZaher/AppData/Local/Pub/Cache/hosted/pub.dev/build_runner-2.4.8",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -111,7 +111,7 @@
     },
     {
       "name": "dart_appwrite",
-      "rootUri": "file:///C:/Users/KareemZaher/AppData/Local/Pub/Cache/hosted/pub.dev/dart_appwrite-8.0.0",
+      "rootUri": "file:///C:/Users/KareemZaher/AppData/Local/Pub/Cache/hosted/pub.dev/dart_appwrite-10.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -171,9 +171,9 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///C:/Users/KareemZaher/AppData/Local/Pub/Cache/hosted/pub.dev/http-0.13.6",
+      "rootUri": "file:///C:/Users/KareemZaher/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     },
     {
       "name": "http_multi_server",
@@ -195,9 +195,9 @@
     },
     {
       "name": "js",
-      "rootUri": "file:///C:/Users/KareemZaher/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7",
+      "rootUri": "file:///C:/Users/KareemZaher/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.7.0",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "json_annotation",
@@ -213,7 +213,7 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///C:/Users/KareemZaher/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.1",
+      "rootUri": "file:///C:/Users/KareemZaher/AppData/Local/Pub/Cache/hosted/pub.dev/lints-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -380,7 +380,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2024-01-11T04:40:28.796658Z",
+  "generated": "2024-01-11T19:44:22.896126Z",
   "generator": "pub",
   "generatorVersion": "3.2.0"
 }
