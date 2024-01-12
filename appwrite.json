@@ -4,7 +4,7 @@
     "functions": [
         {
             "$id": "65a03e872b8af9cb6fcb",
-            "name": "My Awesome Function",
+            "name": "create-doctor-function",
             "runtime": "dart-2.17",
             "execute": [],
             "events": [],

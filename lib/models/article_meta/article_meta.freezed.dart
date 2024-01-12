@@ -21,7 +21,7 @@ ArticleMeta _$ArticleMetaFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ArticleMeta {
   String get id => throw _privateConstructorUsedError;
-  String get docid => throw _privateConstructorUsedError;
+  String get docid => throw _privateConstructorUsedError; //redundant
   String get title_en => throw _privateConstructorUsedError;
   String get title_ar => throw _privateConstructorUsedError;
   String get description_en => throw _privateConstructorUsedError;
@@ -221,6 +221,7 @@ class _$ArticleMetaImpl implements _ArticleMeta {
   final String id;
   @override
   final String docid;
+//redundant
   @override
   final String title_en;
   @override
@@ -302,7 +303,7 @@ abstract class _ArticleMeta implements ArticleMeta {
   String get id;
   @override
   String get docid;
-  @override
+  @override //redundant
   String get title_en;
   @override
   String get title_ar;

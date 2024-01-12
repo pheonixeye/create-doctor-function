@@ -6,6 +6,7 @@ import 'package:starter_template/models/article_meta/article_meta.dart';
 import 'package:starter_template/models/clinic_visit/clinic_visit.dart';
 import 'package:starter_template/models/documents/documents.dart';
 import 'package:starter_template/models/invoice/invoice.dart';
+import 'package:starter_template/models/media/media.dart';
 import 'package:starter_template/models/review/review.dart';
 import 'package:starter_template/utils/create_attribute.dart';
 
@@ -40,13 +41,16 @@ Future<dynamic> main(final context) async {
 
   try {
     //check if doctor with recieved id is created
-    final _doctors = await db.listDocuments(
-        databaseId: Platform.environment['DATABASE_DOCTORS']!,
-        collectionId:
-            Platform.environment['DOCTORS_DATABASE_DOCTORS_COLLECTION']!,
-        queries: [Query.equal('synd_id', syndId)]);
+    final doctors = await db.listDocuments(
+      databaseId: Platform.environment['DATABASE_DOCTORS']!,
+      collectionId:
+          Platform.environment['DOCTORS_DATABASE_DOCTORS_COLLECTION']!,
+      queries: [
+        Query.equal('synd_id', syndId),
+      ],
+    );
 
-    final doctor = _doctors.documents.first;
+    final doctor = doctors.documents.first;
 
     final docId = doctor.$id;
 
@@ -76,14 +80,14 @@ Future<dynamic> main(final context) async {
     );
 
     //populate doctor-visits collection with visit attributes
-    ClinicVisit.scheme.forEach((key, Type value) async {
+    ClinicVisit.scheme.forEach((key, value) async {
       await createAttribute(
-        type: value,
+        type: value.type,
         databases: db,
         databaseId: Platform.environment['DATABASE_VISITS']!,
         collectionId: doctor.$id,
         key: key,
-        size: 100,
+        size: value.size,
         xrequired: true,
       );
     });
@@ -99,12 +103,12 @@ Future<dynamic> main(final context) async {
     //populate doctor-reviews collection with review attributes
     Review.scheme.forEach((key, value) async {
       await createAttribute(
-        type: value,
+        type: value.type,
         databases: db,
         databaseId: Platform.environment['DATABASE_REVIEWS']!,
         collectionId: doctor.$id,
         key: key,
-        size: 100,
+        size: value.size,
         xrequired: true,
       );
     });
@@ -120,12 +124,12 @@ Future<dynamic> main(final context) async {
     //populate doctor-invoices collection with invoices attributes
     Invoice.scheme.forEach((key, value) async {
       await createAttribute(
-        type: value,
+        type: value.type,
         databases: db,
         databaseId: Platform.environment['DATABASE_INVOICES']!,
         collectionId: doctor.$id,
         key: key,
-        size: 100,
+        size: value.size,
         xrequired: true,
       );
     });
@@ -141,17 +145,38 @@ Future<dynamic> main(final context) async {
     //populate doctor-invoices collection with invoices attributes
     ArticleMeta.scheme.forEach((key, value) async {
       await createAttribute(
-        type: value,
+        type: value.type,
         databases: db,
         databaseId: Platform.environment['DATABASE_ARTICLES_META']!,
         collectionId: doctor.$id,
         key: key,
-        size: 100,
+        size: value.size,
         xrequired: true,
       );
     });
 
-    context.log('doctor creation algorithm complete.');
+    //create empty doctor-media collection in media db with id of doctor
+    await db.createCollection(
+      databaseId: Platform.environment['DATABASE_MEDIA']!,
+      collectionId: doctor.$id,
+      name: doctor.data['name_en'],
+      permissions: [],
+    );
+
+    //populate doctor-invoices collection with invoices attributes
+    Media.scheme.forEach((key, value) async {
+      await createAttribute(
+        type: value.type,
+        databases: db,
+        databaseId: Platform.environment['DATABASE_MEDIA']!,
+        collectionId: doctor.$id,
+        key: key,
+        size: value.size,
+        xrequired: true,
+      );
+    });
+
+    context.log('doctor creation algorithm for doctor $syndId complete.');
     return context.res.json({
       'type': 'info',
       'code': 0,
