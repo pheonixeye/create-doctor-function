@@ -1,16 +1,20 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:starter_template/models/type_size/type_size.dart';
 part 'clinic.freezed.dart';
 part 'clinic.g.dart';
 
 @freezed
 class Clinic with _$Clinic {
   const factory Clinic({
-    required String id,
     required String doc_id,
     required String speciality_en,
     required String speciality_ar,
+    required String name_en,
+    required String name_ar,
+    required String venue_en,
+    required String venue_ar,
     required String gov_en,
     required String gov_ar,
     required String city_en,
@@ -20,7 +24,7 @@ class Clinic with _$Clinic {
     required String address_en,
     required String address_ar,
     required String location_link,
-    required String attendance,
+    required bool attendance,
     required int fees,
     required int discount,
     required List<String> off_dates,
@@ -28,23 +32,26 @@ class Clinic with _$Clinic {
 
   factory Clinic.fromJson(Map<String, Object?> json) => _$ClinicFromJson(json);
 
-  static Map<String, Type> scheme = {
-    'id': String,
-    'doc_id': String,
-    'speciality_en': String,
-    'speciality_ar': String,
-    'gov_en': String,
-    'gov_ar': String,
-    'city_en': String,
-    'city_ar': String,
-    'mobile': String,
-    'landline': String,
-    'address_en': String,
-    'address_ar': String,
-    'location_link': String,
-    'attendance': String,
-    'fees': int,
-    'discount': int,
-    'off_dates': List<String>,
+  static Map<String, TypeSize> scheme = {
+    'doc_id': TypeSize(String, 100),
+    'name_en': TypeSize(String, 100),
+    'name_ar': TypeSize(String, 100),
+    'venue_en': TypeSize(String, 100),
+    'venue_ar': TypeSize(String, 100),
+    'speciality_en': TypeSize(String, 100),
+    'speciality_ar': TypeSize(String, 100),
+    'gov_en': TypeSize(String, 100),
+    'gov_ar': TypeSize(String, 100),
+    'city_en': TypeSize(String, 100),
+    'city_ar': TypeSize(String, 100),
+    'mobile': TypeSize(String, 100),
+    'landline': TypeSize(String, 100),
+    'address_en': TypeSize(String, 100),
+    'address_ar': TypeSize(String, 100),
+    'location_link': TypeSize(String, 100),
+    'attendance': TypeSize(String, 100),
+    'fees': TypeSize(int, 100),
+    'discount': TypeSize(int, 100),
+    'off_dates': TypeSize(List<String>, 100),
   };
 }

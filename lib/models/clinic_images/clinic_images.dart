@@ -7,7 +7,6 @@ part 'clinic_images.g.dart';
 @freezed
 class ClinicImages with _$ClinicImages {
   const factory ClinicImages({
-    required String clinic_id,
     required List<String> images,
   }) = _ClinicImages;
 
@@ -15,7 +14,6 @@ class ClinicImages with _$ClinicImages {
       _$ClinicImagesFromJson(json);
 
   static Map<String, Type> scheme = {
-    'clinic_id': String,
     "images": List<String>,
   };
 }
