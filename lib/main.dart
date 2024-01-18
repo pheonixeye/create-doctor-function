@@ -16,6 +16,13 @@ Future<dynamic> main(final context) async {
 // Why not try the Appwrite SDK?
   //
 
+  final List<String> defaultPermissions = [
+    Permission.read(Role.any()),
+    Permission.update(Role.any()),
+    Permission.delete(Role.any()),
+    Permission.write(Role.any()),
+  ];
+
   if (context.req.method != 'POST') {
     context.error('bad request.');
     return context.res.json({
@@ -25,7 +32,7 @@ Future<dynamic> main(final context) async {
     });
   }
   final client = Client()
-      .setEndpoint('http://192.168.0.107:4567/v1')
+      .setEndpoint(Platform.environment['ADDRESS']!)
       .setProject(Platform.environment['APPWRITE_FUNCTION_PROJECT_ID'])
       .setKey(Platform.environment['APPWRITE_API_KEY'])
       .setSelfSigned();
@@ -61,22 +68,22 @@ Future<dynamic> main(final context) async {
       databaseId: Platform.environment['DATABASE_DOCTORS']!,
       collectionId:
           Platform.environment['DOCTORS_DATABASE_DOCTOR_DOCUMENTS_COLLECTION']!,
-      documentId: ID.unique(),
+      documentId: doctor.$id,
       data: DoctorDocuments(
-        docid: doctor.$id,
         synd_card: '',
         permit_cert: '',
         specialist_cert: '',
         consultant_cert: '',
         avatar: '',
       ).toJson(),
+      permissions: defaultPermissions,
     );
     //create empty visits collection in visits db with id of doctor
     await db.createCollection(
       databaseId: Platform.environment['DATABASE_VISITS']!,
       collectionId: doctor.$id,
       name: doctor.data['name_en'],
-      permissions: [],
+      permissions: defaultPermissions,
     );
 
     //populate doctor-visits collection with visit attributes
@@ -97,7 +104,7 @@ Future<dynamic> main(final context) async {
       databaseId: Platform.environment['DATABASE_REVIEWS']!,
       collectionId: doctor.$id,
       name: doctor.data['name_en'],
-      permissions: [],
+      permissions: defaultPermissions,
     );
 
     //populate doctor-reviews collection with review attributes
@@ -118,7 +125,7 @@ Future<dynamic> main(final context) async {
       databaseId: Platform.environment['DATABASE_INVOICES']!,
       collectionId: doctor.$id,
       name: doctor.data['name_en'],
-      permissions: [],
+      permissions: defaultPermissions,
     );
 
     //populate doctor-invoices collection with invoices attributes
@@ -139,7 +146,7 @@ Future<dynamic> main(final context) async {
       databaseId: Platform.environment['DATABASE_ARTICLES_META']!,
       collectionId: doctor.$id,
       name: doctor.data['name_en'],
-      permissions: [],
+      permissions: defaultPermissions,
     );
 
     //populate doctor-invoices collection with invoices attributes
@@ -160,7 +167,7 @@ Future<dynamic> main(final context) async {
       databaseId: Platform.environment['DATABASE_MEDIA']!,
       collectionId: doctor.$id,
       name: doctor.data['name_en'],
-      permissions: [],
+      permissions: defaultPermissions,
     );
 
     //populate doctor-invoices collection with invoices attributes

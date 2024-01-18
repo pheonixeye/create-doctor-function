@@ -16,7 +16,8 @@
             "commands": "dart pub get",
             "ignore": [
                 ".packages",
-                ".dart_tool"
+                ".dart_tool",
+                ".git"
             ],
             "path": "."
         }

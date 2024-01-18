@@ -20,7 +20,6 @@ DoctorDocuments _$DoctorDocumentsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DoctorDocuments {
-  String get docid => throw _privateConstructorUsedError;
   String get synd_card => throw _privateConstructorUsedError;
   String get permit_cert => throw _privateConstructorUsedError;
   String get specialist_cert => throw _privateConstructorUsedError;
@@ -40,8 +39,7 @@ abstract class $DoctorDocumentsCopyWith<$Res> {
       _$DoctorDocumentsCopyWithImpl<$Res, DoctorDocuments>;
   @useResult
   $Res call(
-      {String docid,
-      String synd_card,
+      {String synd_card,
       String permit_cert,
       String specialist_cert,
       String consultant_cert,
@@ -61,7 +59,6 @@ class _$DoctorDocumentsCopyWithImpl<$Res, $Val extends DoctorDocuments>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? docid = null,
     Object? synd_card = null,
     Object? permit_cert = null,
     Object? specialist_cert = null,
@@ -69,10 +66,6 @@ class _$DoctorDocumentsCopyWithImpl<$Res, $Val extends DoctorDocuments>
     Object? avatar = null,
   }) {
     return _then(_value.copyWith(
-      docid: null == docid
-          ? _value.docid
-          : docid // ignore: cast_nullable_to_non_nullable
-              as String,
       synd_card: null == synd_card
           ? _value.synd_card
           : synd_card // ignore: cast_nullable_to_non_nullable
@@ -106,8 +99,7 @@ abstract class _$$DoctorDocumentsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String docid,
-      String synd_card,
+      {String synd_card,
       String permit_cert,
       String specialist_cert,
       String consultant_cert,
@@ -125,7 +117,6 @@ class __$$DoctorDocumentsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? docid = null,
     Object? synd_card = null,
     Object? permit_cert = null,
     Object? specialist_cert = null,
@@ -133,10 +124,6 @@ class __$$DoctorDocumentsImplCopyWithImpl<$Res>
     Object? avatar = null,
   }) {
     return _then(_$DoctorDocumentsImpl(
-      docid: null == docid
-          ? _value.docid
-          : docid // ignore: cast_nullable_to_non_nullable
-              as String,
       synd_card: null == synd_card
           ? _value.synd_card
           : synd_card // ignore: cast_nullable_to_non_nullable
@@ -165,8 +152,7 @@ class __$$DoctorDocumentsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DoctorDocumentsImpl implements _DoctorDocuments {
   const _$DoctorDocumentsImpl(
-      {required this.docid,
-      required this.synd_card,
+      {required this.synd_card,
       required this.permit_cert,
       required this.specialist_cert,
       required this.consultant_cert,
@@ -175,8 +161,6 @@ class _$DoctorDocumentsImpl implements _DoctorDocuments {
   factory _$DoctorDocumentsImpl.fromJson(Map<String, dynamic> json) =>
       _$$DoctorDocumentsImplFromJson(json);
 
-  @override
-  final String docid;
   @override
   final String synd_card;
   @override
@@ -190,7 +174,7 @@ class _$DoctorDocumentsImpl implements _DoctorDocuments {
 
   @override
   String toString() {
-    return 'DoctorDocuments(docid: $docid, synd_card: $synd_card, permit_cert: $permit_cert, specialist_cert: $specialist_cert, consultant_cert: $consultant_cert, avatar: $avatar)';
+    return 'DoctorDocuments(synd_card: $synd_card, permit_cert: $permit_cert, specialist_cert: $specialist_cert, consultant_cert: $consultant_cert, avatar: $avatar)';
   }
 
   @override
@@ -198,7 +182,6 @@ class _$DoctorDocumentsImpl implements _DoctorDocuments {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DoctorDocumentsImpl &&
-            (identical(other.docid, docid) || other.docid == docid) &&
             (identical(other.synd_card, synd_card) ||
                 other.synd_card == synd_card) &&
             (identical(other.permit_cert, permit_cert) ||
@@ -212,7 +195,7 @@ class _$DoctorDocumentsImpl implements _DoctorDocuments {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, docid, synd_card, permit_cert,
+  int get hashCode => Object.hash(runtimeType, synd_card, permit_cert,
       specialist_cert, consultant_cert, avatar);
 
   @JsonKey(ignore: true)
@@ -232,8 +215,7 @@ class _$DoctorDocumentsImpl implements _DoctorDocuments {
 
 abstract class _DoctorDocuments implements DoctorDocuments {
   const factory _DoctorDocuments(
-      {required final String docid,
-      required final String synd_card,
+      {required final String synd_card,
       required final String permit_cert,
       required final String specialist_cert,
       required final String consultant_cert,
@@ -242,8 +224,6 @@ abstract class _DoctorDocuments implements DoctorDocuments {
   factory _DoctorDocuments.fromJson(Map<String, dynamic> json) =
       _$DoctorDocumentsImpl.fromJson;
 
-  @override
-  String get docid;
   @override
   String get synd_card;
   @override
