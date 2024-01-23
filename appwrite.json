@@ -6,7 +6,9 @@
             "$id": "65a03e872b8af9cb6fcb",
             "name": "create-doctor-function",
             "runtime": "dart-2.17",
-            "execute": [],
+            "execute": [
+                "any"
+            ],
             "events": [],
             "schedule": "",
             "timeout": 15,

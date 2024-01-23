@@ -226,7 +226,7 @@ Future<dynamic> main(final context) async {
                 .environment['DATABASE_CLINICS_COLLECTION_CLINIC_IMAGES']!,
             documentId: clinic_id,
             data: {
-              'clinic_images': [],
+              'images': [],
             },
             permissions: defaultPermissions,
           );
@@ -248,6 +248,12 @@ Future<dynamic> main(final context) async {
               size: 100,
               xrequired: true,
             );
+          });
+          context.log('clinic creation algorithm for $clinic_id complete.');
+          return context.res.json({
+            'type': 'info',
+            'code': 0,
+            'reason': 'clinic creation algorithm complete.'
           });
         } else {
           //clinic does not exist
