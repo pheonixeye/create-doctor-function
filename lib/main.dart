@@ -280,4 +280,6 @@ Future<dynamic> main(final context) async {
       });
     }
   }
+  //FIXME: cloud function dependability is really at question here
+  //FIXME: consider a privately constructed server
 }
