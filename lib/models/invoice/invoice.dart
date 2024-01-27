@@ -17,8 +17,8 @@ class Invoice with _$Invoice {
     required int year,
     required String payment_reference,
     required bool paid,
-    required int amount,
-    required int tax,
+    required double amount,
+    required double tax,
     required double total,
     required List<String> clinic_visits,
   }) = _Invoice;
@@ -35,8 +35,8 @@ class Invoice with _$Invoice {
     'year': TypeSize(int, 100),
     'payment_reference': TypeSize(String, 200),
     'paid': TypeSize(bool, 100),
-    'amount': TypeSize(int, 100),
-    'tax': TypeSize(int, 100),
+    'amount': TypeSize(double, 100),
+    'tax': TypeSize(double, 100),
     'total': TypeSize(double, 100),
     'clinic_visits': TypeSize(List<String>, 100),
   };

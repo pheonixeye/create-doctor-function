@@ -8,9 +8,11 @@ part 'review.g.dart';
 @freezed
 class Review with _$Review {
   const factory Review({
-    required String docid,
     required String username,
+    required String phone,
+    required String doc_reply,
     required String body,
+    required String date,
     required int stars,
     required int waiting_time,
   }) = _Review;
@@ -18,9 +20,11 @@ class Review with _$Review {
   factory Review.fromJson(Map<String, Object?> json) => _$ReviewFromJson(json);
 
   static Map<String, TypeSize> scheme = {
-    'docid': TypeSize(String, 100),
     'username': TypeSize(String, 100),
+    'phone': TypeSize(String, 11),
     'body': TypeSize(String, 400),
+    'date': TypeSize(String, 50),
+    'doc_reply': TypeSize(String, 400),
     'stars': TypeSize(int, 100),
     'waiting_time': TypeSize(int, 100),
   };
