@@ -1,5 +1,6 @@
 name: starter_template
 version: 1.0.0
+publish_to: none
 
 environment:
   sdk: ^2.17.0
@@ -9,6 +10,8 @@ dependencies:
   freezed_annotation: 
   json_annotation: 
   equatable:
+  doctopia_models:
+    git: https://github.com/pheonixeye/doctopia_models.git
 
 
 dev_dependencies:

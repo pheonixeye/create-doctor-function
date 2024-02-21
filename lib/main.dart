@@ -4,13 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io' show Platform;
 import 'package:dart_appwrite/dart_appwrite.dart';
-import 'package:starter_template/models/article_meta/article_meta.dart';
-import 'package:starter_template/models/clinic_visit/clinic_visit.dart';
-import 'package:starter_template/models/documents/documents.dart';
-import 'package:starter_template/models/invoice/invoice.dart';
-import 'package:starter_template/models/media/media.dart';
-import 'package:starter_template/models/review/review.dart';
-import 'package:starter_template/models/schedule/schedule.dart';
+import 'package:doctopia_models/doctopia_models.dart';
 import 'package:starter_template/utils/create_attribute.dart';
 
 // This is your Appwrite function
@@ -51,7 +45,7 @@ Future<dynamic> main(final context) async {
       context.log(syndId);
 
       try {
-        //check if doctor with recieved id is created
+        context.log("check if doctor with recieved id is created");
         final doctors = await db.listDocuments(
           databaseId: Platform.environment['DATABASE_DOCTORS']!,
           collectionId:
@@ -67,7 +61,8 @@ Future<dynamic> main(final context) async {
 
         context.log(docId);
 
-        //create empty doctor-document ref in doctor-documents collection
+        context.log(
+            "create empty doctor-document ref in doctor-documents collection");
         await db.createDocument(
           databaseId: Platform.environment['DATABASE_DOCTORS']!,
           collectionId: Platform
@@ -82,7 +77,8 @@ Future<dynamic> main(final context) async {
           ).toJson(),
           permissions: defaultPermissions,
         );
-        //create empty visits collection in visits db with id of doctor
+        context.log(
+            "create empty visits collection in visits db with id of doctor");
         await db.createCollection(
           databaseId: Platform.environment['DATABASE_VISITS']!,
           collectionId: doctor.$id,
@@ -90,7 +86,7 @@ Future<dynamic> main(final context) async {
           permissions: defaultPermissions,
         );
 
-        //populate doctor-visits collection with visit attributes
+        context.log("populate doctor-visits collection with visit attributes");
         ClinicVisit.scheme.forEach((key, value) async {
           await createAttribute(
             type: value.type,
@@ -103,7 +99,8 @@ Future<dynamic> main(final context) async {
           );
         });
 
-        //create empty reviews collection in reviews db with id of doctor
+        context.log(
+            "create empty reviews collection in reviews db with id of doctor");
         await db.createCollection(
           databaseId: Platform.environment['DATABASE_REVIEWS']!,
           collectionId: doctor.$id,
@@ -111,7 +108,8 @@ Future<dynamic> main(final context) async {
           permissions: defaultPermissions,
         );
 
-        //populate doctor-reviews collection with review attributes
+        context
+            .log("populate doctor-reviews collection with review attributes");
         Review.scheme.forEach((key, value) async {
           await createAttribute(
             type: value.type,
@@ -124,7 +122,8 @@ Future<dynamic> main(final context) async {
           );
         });
 
-        //create empty invoives collection in invoices db with id of doctor
+        context.log(
+            "create empty invoives collection in invoices db with id of doctor");
         await db.createCollection(
           databaseId: Platform.environment['DATABASE_INVOICES']!,
           collectionId: doctor.$id,
@@ -132,7 +131,8 @@ Future<dynamic> main(final context) async {
           permissions: defaultPermissions,
         );
 
-        //populate doctor-invoices collection with invoices attributes
+        context.log(
+            "populate doctor-invoices collection with invoices attributes");
         Invoice.scheme.forEach((key, value) async {
           await createAttribute(
             type: value.type,
@@ -145,7 +145,8 @@ Future<dynamic> main(final context) async {
           );
         });
 
-        //create empty articles-meta collection in articles-meta db with id of doctor
+        context.log(
+            "create empty articles-meta collection in articles-meta db with id of doctor");
         await db.createCollection(
           databaseId: Platform.environment['DATABASE_ARTICLES_META']!,
           collectionId: doctor.$id,
@@ -153,7 +154,8 @@ Future<dynamic> main(final context) async {
           permissions: defaultPermissions,
         );
 
-        //populate doctor-invoices collection with invoices attributes
+        context.log(
+            "populate doctor-invoices collection with invoices attributes");
         ArticleMeta.scheme.forEach((key, value) async {
           await createAttribute(
             type: value.type,
@@ -166,7 +168,8 @@ Future<dynamic> main(final context) async {
           );
         });
 
-        //create empty doctor-media collection in media db with id of doctor
+        context.log(
+            "create empty doctor-media collection in media db with id of doctor");
         await db.createCollection(
           databaseId: Platform.environment['DATABASE_MEDIA']!,
           collectionId: doctor.$id,
@@ -174,7 +177,8 @@ Future<dynamic> main(final context) async {
           permissions: defaultPermissions,
         );
 
-        //populate doctor-invoices collection with invoices attributes
+        context.log(
+            "populate doctor-invoices collection with invoices attributes");
         Media.scheme.forEach((key, value) async {
           await createAttribute(
             type: value.type,
@@ -208,7 +212,7 @@ Future<dynamic> main(final context) async {
 
         context.log(clinic_id);
 
-        //get clinic created by it's id
+        context.log("get clinic created by it's id");
         final clinic = await db.getDocument(
           databaseId: Platform.environment['DATABASE_CLINICS']!,
           collectionId:
@@ -219,7 +223,8 @@ Future<dynamic> main(final context) async {
         if (clinic.$id == clinic_id) {
           //clinic exists
 
-          //create clinic_images document in clinic images collection in clinics database
+          context.log(
+              "create clinic_images document in clinic images collection in clinics database");
           await db.createDocument(
             databaseId: Platform.environment['DATABASE_CLINICS']!,
             collectionId: Platform
@@ -230,17 +235,18 @@ Future<dynamic> main(final context) async {
             },
             permissions: defaultPermissions,
           );
-          //create schedule collection in schedule database with id of the clinic
+          context.log(
+              "create schedule collection in schedule database with id of the clinic");
           await db.createCollection(
             databaseId: Platform.environment['DATABASE_SCHEDULE']!,
             collectionId: clinic_id,
             name: clinic.data['mobile'],
             permissions: defaultPermissions,
           );
-          //populate schedule collection attributes
+          context.log("populate schedule collection attributes");
           Schedule.scheme.forEach((key, value) async {
             await createAttribute(
-              type: value,
+              type: value.type,
               databases: db,
               databaseId: Platform.environment['DATABASE_SCHEDULE']!,
               collectionId: clinic_id,

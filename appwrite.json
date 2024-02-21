@@ -11,7 +11,7 @@
             ],
             "events": [],
             "schedule": "",
-            "timeout": 15,
+            "timeout": 60,
             "enabled": true,
             "logging": true,
             "entrypoint": "lib/main.dart",
